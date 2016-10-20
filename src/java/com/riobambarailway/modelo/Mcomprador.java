@@ -18,27 +18,27 @@ import java.util.ArrayList;
  * @author William
  */
 public class Mcomprador {
-    public static boolean insertarComprador(Ccomprador comprador) throws Exception {
-        boolean respuesta = false;
 
+    public static int insertarComprador(Ccomprador comprador) throws Exception {
+        int respuesta=0;
         try {
             ArrayList<Parametro> lstP = new ArrayList<>();
-            String sql = "SELECT * from public.fn_insert_tcomprador(?,?,?,?,?,?)";
+            /*String sql = "INSERT INTO `bdrailway`.`comprador`\n"
+                    + "(`comprador_nombre`,`comprador_apellido`,`comprador_correo`,\n"
+                    + "`comprador_celular`,`comprador_telefono`,`comprador_telefono_trabajo`)\n"
+                    + "VALUES (?,?,?,?,?,?);";*/
+            String sql = "CALL `bdrailway`.`fn_insert_comprador`(?,?,?,?,?,?);";
+            
             lstP.add(new Parametro(1, comprador.getNombreComprador()));
             lstP.add(new Parametro(2, comprador.getApellidoComprador()));
             lstP.add(new Parametro(3, comprador.getCorreoComprador()));
             lstP.add(new Parametro(4, comprador.getCelularComprador()));
             lstP.add(new Parametro(5, comprador.getTelefonoComprador()));
             lstP.add(new Parametro(6, comprador.getTelTrabajoComprador()));
-            
-            
-
             ConjuntoResultado rs = AccesoDatos.ejecutaQuery(sql, lstP);
-            
+
             while (rs.next()) {
-                if (rs.getBoolean(0) == true) {
-                    respuesta = true;
-                }
+                respuesta = rs.getInt(0);
             }
             rs = null;
         } catch (SQLException e) {

@@ -27,8 +27,6 @@ public class Mpassenger {
             String sql = "SELECT * from public.fn_insert_tpasajero(?,?,?,?,?)";
             lstP.add(new Parametro(1, passenger.getNombrePas()));
             lstP.add(new Parametro(2, passenger.getApellidoPas()));
-            lstP.add(new Parametro(3, passenger.getIdenTipoPas()));
-            lstP.add(new Parametro(4, passenger.getIndenNumPas()));
             lstP.add(new Parametro(5, passenger.getPaisPas()));
             ConjuntoResultado rs = AccesoDatos.ejecutaQuery(sql, lstP);
             

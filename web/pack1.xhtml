@@ -2,7 +2,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
     <head>
         <title>TODO supply a title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -89,13 +91,26 @@
                                 </div>
                                 <b class="text-pad">NO Incluye</b><br></br>
                                 <div class="text-padd">
-                                    Alimentación <br></br>
                                     Boletos aéreos<br></br>                                
                                     Impuestos IGV<br></br>
                                     Impuestos de aeropuerto<br></br>
                                     Propinas<br></br>
                                     Otros servicios no mencionados en el programa
                                 </div>
+                                <h:form id="formPacks">
+                                    <div class="row work-above buy">
+                                        <div class="col-md-8 center-block">
+                                            <img src="images/comprar.png" class="img-responsive"/>  
+                                            <div class="container">
+                                                Buy <br/>
+                                                The Devil`s Nose <br/>
+                                                Pack 
+                                            </div>
+                                            <h:commandButton id="btnPack1" value="Confirmar" class="btn btn-primary"
+                                                             actionListener="#{pagoControlador.seleccionarPaquete(1)}" action="compra" />
+                                        </div>
+                                    </div>                                   
+                                </h:form>
                             </div>
                             <div class="col-md-4 col-sm-10 col-xs-12 web">
                                 <img src="images/nariz-01.png" class="img-responsive"/> 

@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <head>
+        <title>Riobamba Railway</title>
+    </head>
+    <h:body>
+        <ui:composition template="template/template.xhtml">
+            <ui:define name="content">
+                <div class="content">
+                    <div class="container ">  
+                        <div class="tagline2">
+                            <img src="images/thanks.png"/>
+                            <div class="container "> 
+                                <h2> 
+                                    THANKS FOR TRAVEL WITH RIOBAMBA RAILWAY
+                                </h2>
+                            </div>
+                        </div>
+                        <div style="background: #fff;" class="padding-top-15">
+                            <div class="square">
+                                <div class="row packtours">
+                                    <div class="col-lg-5 col-md5 col-sm-12">
+                                        PASSENGER DATA
+                                    </div>
+                                </div>
+                                <h:form  prependId="false" >
+                                    <p:growl id="mensajeGeneral"/>
+                                    <ui:repeat var="pasajero" value="#{pagoControlador.lstPasajeros}">
+                                        <div class="row items">
+                                            <div class="col-md-3 col-sm-10 col-xs-12 col-md-offset-1">
+                                                <p:outputLabel value="PASSENGER #{pasajero.numero}"/><br/>                                                
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-sm-10 col-md-offset-1" style="font-size: 0.8em;">
+                                                PLEASE COMPLETE ALL INFORMATION<p/><p/>                                       
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-4 col-md-5 col-sm-6 col-md-offset-2 ">
+                                                <p:outputLabel value="NAME:"/> <br/>
+                                                <p:inputText value="#{pasajero.nombrePas}"/>
+                                            </div>
+                                            <div class="col-lg-4 col-md-5 col-sm-6  ">
+                                                <p:outputLabel value="LAST NAME"/> <br/>
+                                                <p:inputText value="#{pasajero.apellidoPas}"/>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-sm-5 col-md-offset-1">
+                                                IDENTITY
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-2 col-md-3 col-sm-3 col-xs-7 col-md-offset-2">
+                                                <p:outputLabel for="slType" value="TYPE:" /><br/>
+                                                <p:selectOneMenu id="slType" value="#{pasajero.tipo_identPas}" >
+                                                    <f:selectItem itemLabel="CEDULA" itemValue="cedula" />
+                                                    <f:selectItem itemLabel="PASSPORT" itemValue="pasaporte" />
+                                                </p:selectOneMenu>
+                                            </div>
+                                            <div class="col-lg-2 col-md-3 col-sm-3 col-xs-7">
+                                                <p:outputLabel for="txtIdent" value="NUMBER:" /><br/>
+                                                <p:inputText id="txtIdent" value="#{pasajero.num_identPas}" size="8"/>
+                                            </div>
+                                            <div class="col-lg-2 col-md-3 col-sm-3 col-xs-7">
+                                                <p:outputLabel for="pais" value="COUNTRY:" /><br/>
+                                                <p:selectOneMenu id="pais" value="#{pasajero.paisPas}" >
+                                                    <f:selectItem itemLabel="Chile" itemValue="chile" />
+                                                    <f:selectItem itemLabel="España" itemValue="españa" />
+                                                    <f:selectItem itemLabel="Ecuador" itemValue="ecuador" />
+                                                    <f:selectItem itemLabel="Colombia" itemValue="colombia" />
+                                                    <f:selectItem itemLabel="Australia" itemValue="australia" />
+                                                    <f:selectItem itemLabel="EEUU" itemValue="EEUU" />
+                                                </p:selectOneMenu>
+                                            </div>
+                                        </div>
+                                        <p/><p/>
+                                    </ui:repeat>
+
+                                    <div class="row packtours">
+                                        <div class="col-lg-5 col-md5">
+                                            CONTACT INFORMATION
+                                        </div>
+                                    </div>
+                                    <div class="row items">
+                                        <div class="col-md-10 col-sm-10 col-xs-12 col-md-offset-1">
+                                            <p:outputLabel value="A CONTACT PERSON"/><br/>                                                
+                                        </div>
+                                    </div><p/>
+                                    <div class="row">
+                                        <div class="col-md-2 col-sm-4 col-md-offset-2">
+                                            <p:outputLabel value="NAME"/> <br/>
+                                            <p:inputText value="#{pagoControlador.objcomprador.nombreComprador}"/>
+                                        </div>
+                                        <div class="col-md-2 col-sm-4 col-md-offset-1">
+                                            <p:outputLabel value=" LAST NAME"/> <br/>
+                                            <p:inputText value="#{pagoControlador.objcomprador.apellidoComprador}"/>
+                                        </div>
+                                        <div class="col-md-2 col-sm-4 col-md-offset-1">
+                                            <p:outputLabel value="EMAIL"/> <br/>
+                                            <p:inputText value="#{pagoControlador.objcomprador.correoComprador}"/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2 col-sm-4 col-md-offset-2">
+                                            <p:outputLabel value="TELEPHONE"/> <br/>
+                                            <p:inputText value="#{pagoControlador.objcomprador.telefonoComprador}"/>
+                                        </div>
+                                        <div class="col-md-2 col-sm-4 col-md-offset-1">
+                                            <p:outputLabel value="WORK PHONE"/> <br/>
+                                            <p:inputText value="#{pagoControlador.objcomprador.telTrabajoComprador}"/>
+                                        </div>
+                                        <div class="col-md-2 col-sm-4 col-md-offset-1">
+                                            <p:outputLabel value="MOBILE"/> <br/>
+                                            <p:inputText value="#{pagoControlador.objcomprador.celularComprador}"/>
+                                        </div>
+                                    </div>
+                                    <div class="row padding-top-50">
+                                        <div class="col-lg-10 col-md-10 col-xs-10 col-lg-offset-1 col-xs-offset-1 line" style="background-color: #000" ></div>
+                                    </div>
+                                    <div class="row line">
+                                        <div class="col-lg-offset-1">
+                                            <h:commandButton id="start" value="Continue Shopping" styleClass="btn btn-primary"  actionListener="#{pagoControlador.insertarPago()}"
+                                                             action="pasajeros" />
+                                        </div>
+                                    </div>
+                                    <h:outputLink value="https://www.paypal.com" target="paypal" >
+                                        <f:param name="cmd" value="_xclick"/>
+                                        <f:param name="business" value="lisethaucancela@gmail.com"/>
+                                        <f:param name="currency_code" value="USD"/>
+                                        <f:param name="item_name" value="HTML book"/>
+                                        <f:param name="amount" value="24.99"/>
+                                        <f:param name="add" value="1"/>
+                                        <h:outputText value="Add To Cart" />
+                                    </h:outputLink>
+                                </h:form>
+
+                                <form action="https://www.sandbox.paypal.com/webscr&#8221;" method="post">
+                                    <input type="hidden" name="cmd" value="_xclick"/>
+                                    <input type="hidden" name="password" value="busin3424"/>
+                                    <input type="hidden" name="custom" value="1123"/>
+                                    <input type="hidden" name="TOKEN" value="EC-7FU52529LA221360D"/>
+                                    <input type="hidden" name="tx" value="TransactionID"/>
+                                    <input type="hidden" name="amount" value="20"/>
+                                    <input type="hidden" name="hosted_button_id" value="LAHQRCXWQEZZE"/>
+                                    <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif&#8221;" name="submit"/>
+                                    <input type="hidden" name="return" value="http://localhost:8080/SSC/final.do?action=saveTransaction&#8221;"/>
+                                    <input type="hidden" name="cancel_return" value="http://localhost.54:8080/SSC/unsuccessfulPayment.jsp&#8221;"/>
+                                    <input type="hidden" name="notify_url" value="http://localhost:8080/SSC/test.jsp&#8221;"/>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

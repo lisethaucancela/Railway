@@ -12,34 +12,44 @@
 
     </head>
     <h:body>
-
-
         <ui:composition template="template/template.xhtml">
             <ui:define name="content">
-                <div class="container ">  
-                    <div class="row">
-                        <div  style="background-position: center ; background:#fff " >
-                            <div class="Cuadrado">
-                                <div class="margen">
-                                    <div class="rectanguloNegro">
-                                        <br/><br/><br/><br/><br/>
-                                        TOTAL:
-                                        <input  type="text"/>
-                                        
+                <div class="content">
+                    <div class="container ">  
+                        <div class="tagline2">
+                            <img src="images/thanks.png"/>
+                            <div class="container "> 
+                                <h2> 
+                                    THANKS FOR TRAVEL WITH RIOBAMBA RAILWAY
+                                </h2>
+                            </div>
+                        </div>
+                        <div style="background: #fff;" class="padding-top-15">
+                            <div class="square">
+                                <div class="row ">
+                                    <div class="col-lg-5 col-md5">
+                                        PAYMENT
                                     </div>
-                                    <div class="rectanguloGris">                                  
-                                        <h4 class ="col-lg-1 letraGris1" style="font-style: normal; color: black">PESSENGER</h4>
-                                    </div>
-
-                                    <div class="lh" ></div>
-
-                                    <div class="lineDiscontinua" style="border-bottom-style: dashed; border-bottom-width: 1px; "></div>
-                                    <div class="flag">
-                                        <img src="images/continue shoping.png" class="imgButton"/>
-                                    </div>
-
-
                                 </div>
+                                <form method="post" action="" >
+                                    <input type="image" src="http://www.paypal.com/en_US/i/btn/sc-but-01.gif" border="0" name="submit"/>
+                                    <h:outputLink value="https://www.paypal.com" target="paypal" >
+                                        <f:param name="cmd" value="_cart"/>
+                                        <f:param name="business" value="lisethaucancela@gmail.com"/>
+                                        <f:param name="currency_code" value="USD"/>
+                                        <f:param name="item_name" value="HTML book"/>
+                                        <f:param name="amount" value="24"/>
+                                        <f:param name="add" value="1"/>
+                                        <input type="hidden" name="hosted_button_id" value="G6T52BA7GRP2Q"/>
+                                        <h:outputText value="Add To Cart" />
+                                    </h:outputLink>
+                                </form>
+                                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                    <input type="hidden" name="cmd" value="_s-xclick"/>
+                                    <input type="hidden" name="hosted_button_id" value="G6T52BA7GRP2Q"/>
+                                    <input type="image" src="https://www.paypalobjects.com/es_XC/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"/>
+
+                                </form>
 
                             </div>
                         </div>

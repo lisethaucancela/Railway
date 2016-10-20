@@ -9,16 +9,20 @@ package com.riobambarailway.entidades;
  *
  * @author Liseth
  */
-public class PackVO {
-    private int id;
-    private String descripcion;
-    private int horas;
-    private int costo;
+public class CPaquete {
 
-    public PackVO(int id, String descripcion, int horas, int costo) {
+    private int id;
+    private String nombre;
+    private String descripcion;
+    private double costo;
+
+    public CPaquete() {
+    }
+
+    public CPaquete(int id, String nombre, String descripcion, double costo) {
         this.id = id;
+        this.nombre = nombre;
         this.descripcion = descripcion;
-        this.horas = horas;
         this.costo = costo;
     }
 
@@ -30,29 +34,28 @@ public class PackVO {
         this.id = id;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
     public String getDescripcion() {
         return descripcion;
     }
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+
     }
 
-    public int getHoras() {
-        return horas;
-    }
-
-    public void setHoras(int horas) {
-        this.horas = horas;
-    }
-
-    public int getCosto() {
+    public double getCosto() {
         return costo;
     }
 
-    public void setCosto(int costo) {
+    public void setCosto(double costo) {
         this.costo = costo;
     }
-    
-    
 }

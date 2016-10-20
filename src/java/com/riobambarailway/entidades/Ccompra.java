@@ -12,30 +12,39 @@ import java.sql.Date;
  * @author William
  */
 public class Ccompra {
-    private CPack idPack;
+    private int idCompra;
+    private int idPack;
     private Date fecha;
     private int cantidad;
-    private int precioUnitario;
-    private int precioTotal;
+    private double precioUnitario;
+    private double precioTotal;
     private Ccomprador idComprador;
 
     public Ccompra() {
     }
 
-    public Ccompra(CPack idPack, Date fecha, int cantidad, int precioUnitario, int precioTotal, Ccomprador idComprador) {
+    public Ccompra(int idCompra, int idPack, Date fecha, int cantidad, double precioUnitario, double precioTotal) {
+        this.idCompra = idCompra;
         this.idPack = idPack;
         this.fecha = fecha;
         this.cantidad = cantidad;
         this.precioUnitario = precioUnitario;
         this.precioTotal = precioTotal;
-        this.idComprador = idComprador;
     }
 
-    public CPack getIdPack() {
+    public int getIdCompra() {
+        return idCompra;
+    }
+
+    public void setIdCompra(int idCompra) {
+        this.idCompra = idCompra;
+    }
+
+    public int getIdPack() {
         return idPack;
     }
 
-    public void setIdPack(CPack idPack) {
+    public void setIdPack(int idPack) {
         this.idPack = idPack;
     }
 
@@ -55,19 +64,19 @@ public class Ccompra {
         this.cantidad = cantidad;
     }
 
-    public int getPrecioUnitario() {
+    public double getPrecioUnitario() {
         return precioUnitario;
     }
 
-    public void setPrecioUnitario(int precioUnitario) {
+    public void setPrecioUnitario(double precioUnitario) {
         this.precioUnitario = precioUnitario;
     }
 
-    public int getPrecioTotal() {
+    public double getPrecioTotal() {
         return precioTotal;
     }
 
-    public void setPrecioTotal(int precioTotal) {
+    public void setPrecioTotal(double precioTotal) {
         this.precioTotal = precioTotal;
     }
 
@@ -79,5 +88,5 @@ public class Ccompra {
         this.idComprador = idComprador;
     }
 
-    
+   
 }

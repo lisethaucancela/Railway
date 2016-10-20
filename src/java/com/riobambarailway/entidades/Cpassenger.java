@@ -10,23 +10,38 @@ package com.riobambarailway.entidades;
  * @author William
  */
 public class Cpassenger {
-     private String nombrePas;
+
+    private int numero;
+    private String nombrePas;
     private String apellidoPas;
-    private String idenTipoPas;
-    private String indenNumPas;
+    private int tipo_identPas;
+    private String num_identPas;
     private String paisPas;
 
     public Cpassenger() {
     }
+    
+     public Cpassenger(int num) {
+         numero = num;
+    }
 
-    public Cpassenger(String nombrePas, String apellidoPas, String idenTipoPas, String indenNumPas, String paisPas) {
+    public Cpassenger(String nombrePas, String apellidoPas, int tipo_identPas, String numero_identPas, String paisPas) {
         this.nombrePas = nombrePas;
         this.apellidoPas = apellidoPas;
-        this.idenTipoPas = idenTipoPas;
-        this.indenNumPas = indenNumPas;
+        this.tipo_identPas = tipo_identPas;
+        this.num_identPas = numero_identPas;
         this.paisPas = paisPas;
     }
 
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+
+    
     public String getNombrePas() {
         return nombrePas;
     }
@@ -43,20 +58,20 @@ public class Cpassenger {
         this.apellidoPas = apellidoPas;
     }
 
-    public String getIdenTipoPas() {
-        return idenTipoPas;
+    public int getTipo_identPas() {
+        return tipo_identPas;
     }
 
-    public void setIdenTipoPas(String idenTipoPas) {
-        this.idenTipoPas = idenTipoPas;
+    public void setTipo_identPas(int tipo_identPas) {
+        this.tipo_identPas = tipo_identPas;
     }
 
-    public String getIndenNumPas() {
-        return indenNumPas;
+    public String getNum_identPas() {
+        return num_identPas;
     }
 
-    public void setIndenNumPas(String indenNumPas) {
-        this.indenNumPas = indenNumPas;
+    public void setNum_identPas(String numero_identPas) {
+        this.num_identPas = numero_identPas;
     }
 
     public String getPaisPas() {
@@ -67,8 +82,5 @@ public class Cpassenger {
         this.paisPas = paisPas;
     }
     
-    
-    
-    
-    
+
 }

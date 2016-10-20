@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * @author William
  */
 public class AccesoDatos {
-    //<editor-fold defaultstate="collapsed" desc="Funcion para ejecutar Procedimientos">
+    //<editor-fold defaultstate="collapsed" desc="Funcion para ejecutar Procedimientos - Ejecuta Comandos">
      /*
      metodo de que permite ejecutar una funcion con parametros
      */
@@ -32,7 +32,6 @@ public class AccesoDatos {
                 //mando mis parametos a la funcion 
                 for (Parametro parm : parametros) {
                     prts.setObject(parm.getPosicion(), parm.getValor());
-
                 }
                 //ejecutando la sentencia
                 int i = prts.executeUpdate();
@@ -48,7 +47,6 @@ public class AccesoDatos {
                 throw exCon;
             } finally {
                 try {
-
                     if (con != null) {
                         //verifico si la conexion no nesta cerrada
                         if (!(con.isClosed())) {
@@ -60,13 +58,13 @@ public class AccesoDatos {
                     throw ex;
                 }
             }
-
         } catch (ClassNotFoundException e) {
             throw e;
         }
         return respuesta;
     }
     //</editor-fold>
+    
     //<editor-fold defaultstate="collapsed" desc="Funcion para ejecutar consulta con resultados sin parametros">
     public static ConjuntoResultado ejecutaQuery(String query) throws Exception {
 
@@ -140,7 +138,8 @@ public class AccesoDatos {
     }
 
 //</editor-fold>
-    //<editor-fold defaultstate="collapsed" desc="Funcion para ejecutar consulta con resultados conparametros">
+    
+    //<editor-fold defaultstate="collapsed" desc="Funcion para ejecutar consulta con resultados con parametros">
     public static ConjuntoResultado ejecutaQuery(String query, ArrayList<Parametro> parametros) throws Exception {
 
         ConjuntoResultado conj = new ConjuntoResultado();
@@ -169,7 +168,6 @@ public class AccesoDatos {
                 for (Parametro param : parametros) {
                     pst.setObject(param.getPosicion(), param.getValor());
                 }
-
                 rs = pst.executeQuery();
                 conj.Fill(rs);
                 rs.close();

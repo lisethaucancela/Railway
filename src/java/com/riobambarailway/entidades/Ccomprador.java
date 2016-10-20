@@ -10,23 +10,34 @@ package com.riobambarailway.entidades;
  * @author William
  */
 public class Ccomprador {
+
+    private int idComprador;
     private String nombreComprador;
     private String apellidoComprador;
     private String correoComprador;
+    private String celularComprador;
     private String telefonoComprador;
     private String telTrabajoComprador;
-    private String celularComprador;
 
     public Ccomprador() {
     }
 
-    public Ccomprador(String nombreComprador, String apellidoComprador, String correoComprador, String telefonoComprador, String telTrabajoComprador, String celularComprador) {
+    public Ccomprador(int idComprador, String nombreComprador, String apellidoComprador, String correoComprador, String celularComprador, String telefonoComprador, String telTrabajoComprador) {
+        this.idComprador = idComprador;
         this.nombreComprador = nombreComprador;
         this.apellidoComprador = apellidoComprador;
         this.correoComprador = correoComprador;
+        this.celularComprador = celularComprador;
         this.telefonoComprador = telefonoComprador;
         this.telTrabajoComprador = telTrabajoComprador;
-        this.celularComprador = celularComprador;
+    }
+
+    public int getIdComprador() {
+        return idComprador;
+    }
+
+    public void setIdComprador(int idComprador) {
+        this.idComprador = idComprador;
     }
 
     public String getNombreComprador() {
@@ -77,6 +88,4 @@ public class Ccomprador {
         this.celularComprador = celularComprador;
     }
 
-    
-           
 }

@@ -1,0 +1,224 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <div class="row">
+            <div class="col-md-10 col-sm-10 col-md-offset-1">
+                <div class="panel panel-myPanel">
+                    <div class="panel-heading centered">
+                        <button class="btn btn-info centered" data-toggle="modal" data-target="#dialogCreatePasajero" data-backdrop="static" title="Nuevo Pasajero">
+                            <i class="fa fa-plus"></i> Nuevo Pasajero
+                        </button>
+                    </div>
+                    <h:form id="frmPasajero">  
+                        <p:growl id="mensajes" showDetail="true" sticky="false" life="5000" />
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table  table-bordered table-hover" id="DataTablePasajeros">
+                                    <thead>
+                                        <tr class="headTable">
+                                            <th>Nombre</th>
+                                            <th>Apellido</th>
+                                            <th>Cédula</th>
+                                            <th>País</th>  
+                                            <th>Acción</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="rowsHighlight">
+                                        <ui:repeat var="Pasajeros" value="#{pagoControlador.lstPasajeros}" >
+                                            <tr aria-selected="false" id="data#{Pasajeros.num_identPas}" >   
+                                                <td>#{Pasajeros.nombrePas}</td>
+                                                <td>#{Pasajeros.apellidoPas}</td>
+                                                <td>#{Pasajeros.num_identPas}</td>
+                                                <td>#{Pasajeros.paisPas}</td>
+                                                <td style="text-align: center; width: 100px;">
+                                                    <h:commandLink id="viewButton" title="Ver" styleClass="bnt1 btn-warning" onclick="$('#dialogViewPasajero').modal('show')">
+                                                        <i class="glyphicon glyphicon-eye-open"></i>
+                                                        <f:setPropertyActionListener value="#{Pasajeros}" target="#{pagoControlador.selObjPasajero}"/>
+                                                        <f:ajax  render=":frmViewPasajero"/> 
+                                                    </h:commandLink>                                                                            
+                                                    <h:commandLink  id="editButton" title="Actualizar" styleClass="bnt1 btn-info" onclick="$('#dialogUpdatePasajero').modal('show')">
+                                                        <i class="glyphicon glyphicon-edit"></i>
+                                                        <f:setPropertyActionListener value="#{Pasajeros}" target="#{pagoControlador.selObjPasajero}"/>
+                                                        <f:ajax render=":frmUpdatePasajero"/>
+                                                    </h:commandLink>
+                                                    <h:commandLink id="deleteButton" title="Eliminar" styleClass="bnt1 btn-danger" onclick="$('#dialogDeletePasajero').modal('show')">
+                                                        <i class="glyphicon glyphicon-trash"></i>
+                                                        <f:setPropertyActionListener value="#{Pasajeros}" target="#{pagoControlador.selObjPasajero}"/>
+                                                        <f:ajax  render=":frmDeletePasajero"/>
+                                                    </h:commandLink> 
+                                                </td>
+                                            </tr>
+                                        </ui:repeat>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <div class="modal fade" id="dialogCreatePasajero" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog"  >
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h:form>
+                            <h:commandLink  onclick="$('#dialogCreatePasajero').modal('hide')" type="reset" styleClass="close">
+                                × 
+                                <p:ajax update=":frmCreatePasajero" resetValues="true" />
+                            </h:commandLink>
+                        </h:form>
+                        <div class="modal-title"> Nuevo Pasajero</div>
+                    </div>
+                    <div class="modal-body">
+                        <h:form styleClass="form-horizontal" id="frmCreatePasajero">
+                            <p:growl id="mensajeCreatePasajero" showDetail="true" sticky="false" life="5000" />
+                            <fieldset>
+                                <div class="form-group">
+                                    <h:outputLabel value="Nombre:" for="txtNombre" styleClass="col-md-4 control-label"/>
+                                    <div class="col-md-4">                                                
+                                        <p:inputText id="txtNombre" value="#{pagoControlador.objpasajero.nombrePas}" title="Nombre" required="true" requiredMessage="El nombre es requerido!" validatorMessage="El nombre debe ser mínimo de 3 caracteres y maximo de 50 caracteres.">
+                                            <f:validateLength minimum="2" maximum="50"/>
+                                        </p:inputText>    
+                                        <p:watermark for="txtNombre" value="Nombre"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <h:outputLabel value="Apellido:" for="txtApellido" styleClass="col-md-4 control-label"/>
+                                    <div class="col-md-4">                                                
+                                        <p:inputText id="txtApellido" value="#{pagoControlador.objpasajero.apellidoPas}" title="Apellido" required="true">
+                                            <f:validateLength minimum="2" maximum="50"/>
+                                        </p:inputText>
+                                        <p:watermark for="txtApellido" value="Apellido"/>
+                                    </div>
+                                </div>  
+                                <div class="form-group">                                            
+                                    <h:outputLabel value="Cédula:" for="txtCedula" styleClass="col-md-4 control-label" />
+                                    <div class="col-md-4">
+                                        <p:inputText id="txtCedula"  value="#{pagoControlador.objpasajero.num_identPas}" title="Cédula" required="true" styleClass="form-control">
+                                            <f:validateLength minimum="3" maximum="10"/>
+                                        </p:inputText>   
+                                        <p:watermark for="txtCedula" value="Cédula"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">                                            
+                                    <label class="col-md-4 control-label" for="cbxMedida">País: </label>
+                                    <h:selectOneMenu id="pais" value="#{pagoControlador.objpasajero.paisPas}" style="width:170px; margin-left: 215px;" styleClass="form-control" >
+                                        <f:selectItem itemLabel="Chile" itemValue="chile" />
+                                        <f:selectItem itemLabel="España" itemValue="españa" />
+                                        <f:selectItem itemLabel="Ecuador" itemValue="ecuador" />
+                                        <f:selectItem itemLabel="Colombia" itemValue="colombia" />
+                                        <f:selectItem itemLabel="Australia" itemValue="australia" />
+                                        <f:selectItem itemLabel="EEUU" itemValue="EEUU" />
+                                    </h:selectOneMenu>
+
+                                </div>  
+
+                                <!-- Button (Double) -->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="button1id"></label>
+                                    <div class="col-md-8">
+                                        <div class="modal-footer">
+                                            <p:commandLink  actionListener="#{pagoControlador.insertarPasajero()}" update="frmCreatePasajero,:frmPasajero"  styleClass="btn btn-success" title="Aceptar">
+                                                <i class="fa fa-save"></i> Aceptar
+                                            </p:commandLink>
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal" title="Cancelar"><i class="fa fa-remove"></i> Cancelar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="dialogUpdatePasajero" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog"  >
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h:form>
+                            <h:commandLink  onclick="$('#dialogUpdatePasajero').modal('hide')" type="reset" styleClass="close">
+                                × 
+                                <p:ajax update=":frmUpdatePasajero" resetValues="true" />
+                            </h:commandLink>
+                        </h:form>
+                        <div class="modal-title"> Nuevo Pasajero</div>
+                    </div>
+                    <div class="modal-body">
+                        <h:form styleClass="form-horizontal" id="frmUpdatePasajero">
+                            <fieldset>
+                                <div class="form-group">
+                                    <h:outputLabel value="Nombre:" for="txtNombre" styleClass="col-md-4 control-label"/>
+                                    <div class="col-md-4">                                                
+                                        <p:inputText id="txtNombre" value="#{pagoControlador.selObjPasajero.nombrePas}" title="Nombre" required="true" requiredMessage="El nombre es requerido!" validatorMessage="El nombre debe ser mínimo de 3 caracteres y maximo de 50 caracteres.">
+                                            <f:validateLength minimum="2" maximum="50"/>
+                                        </p:inputText>    
+                                        <p:watermark for="txtNombre" value="Nombre"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <h:outputLabel value="Apellido:" for="txtApellido" styleClass="col-md-4 control-label"/>
+                                    <div class="col-md-4">                                                
+                                        <p:inputText id="txtApellido" value="#{pagoControlador.selObjPasajero.apellidoPas}" title="Apellido" required="true">
+                                            <f:validateLength minimum="2" maximum="50"/>
+                                        </p:inputText>
+                                        <p:watermark for="txtApellido" value="Apellido"/>
+                                    </div>
+                                </div>  
+                                <div class="form-group">                                            
+                                    <h:outputLabel value="Cédula:" for="txtCedula" styleClass="col-md-4 control-label" />
+                                    <div class="col-md-4">
+                                        <p:inputText id="txtCedula"  value="#{pagoControlador.selObjPasajero.num_identPas}" title="Cédula" required="true" styleClass="form-control">
+                                            <f:validateLength minimum="3" maximum="10"/>
+                                        </p:inputText>   
+                                        <p:watermark for="txtCedula" value="Cédula"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">                                            
+                                    <label class="col-md-4 control-label" for="cbxMedida">País: </label>
+                                    <h:selectOneMenu id="pais" value="#{pagoControlador.selObjPasajero.paisPas}" style="width:170px; margin-left: 215px;" styleClass="form-control" >
+                                        <f:selectItem itemLabel="Chile" itemValue="chile" />
+                                        <f:selectItem itemLabel="España" itemValue="españa" />
+                                        <f:selectItem itemLabel="Ecuador" itemValue="ecuador" />
+                                        <f:selectItem itemLabel="Colombia" itemValue="colombia" />
+                                        <f:selectItem itemLabel="Australia" itemValue="australia" />
+                                        <f:selectItem itemLabel="EEUU" itemValue="EEUU" />
+                                    </h:selectOneMenu>
+
+                                </div>  
+
+                                <!-- Button (Double) -->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="button1id"></label>
+                                    <div class="col-md-8">
+                                        <div class="modal-footer">
+                                            <p:commandLink  actionListener="#{pagoControlador.insertarPasajero()}" update="frmUpdatePasajero" oncomplete="handleSubmit1(args, 'dialogCreatePasajero');" styleClass="btn btn-success" title="Aceptar">
+                                                <i class="fa fa-save"></i> Aceptar
+                                            </p:commandLink>
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal" title="Cancelar"><i class="fa fa-remove"></i> Cancelar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </ui:composition>
+</html>

@@ -97,7 +97,7 @@ ul li img {
 .box-footer .col-md-2{
     padding: 0 10px;
 }
-.tagline, .work-above{
+.tagline, .tagline2, .work-above{
     height: 100%;
     overflow: hidden;
     display: block;
@@ -111,13 +111,18 @@ ul li img {
     z-index: 1;
     position: relative;
 }
+.tagline2 > img{
+    width: 100%;
+    height: 60px;
+    z-index: 1;    
+}
 .work-above > img{
     width: 100%;
     height:  100%;
     z-index: 1;
     position: relative;
 }
-.tagline .container, .work-above .container{
+.tagline .container, .work-above .container, .tagline2 .container{
     z-index: 3;
     position: absolute;
     display: block;
@@ -127,11 +132,11 @@ ul li img {
 .pack .container{
     padding-top: 40px;
 }
-.pack, .build{
+.pack, .build, .buy{
     text-align: center !important;    
     color: #fff;    
 }
-.build .container{
+.build .container, .buy .container{
     -webkit-transform: rotate(-2deg) ;
     -moz-transform: rotate(-2deg);
     -o-transform:  rotate(-2deg) ;
@@ -172,6 +177,14 @@ ul li img {
     font-size: 2.3em;     
     display: inline-block; 
     margin-top: 5px;
+    font-weight: 900;
+}
+.tagline2 h2 {
+    color: #fff;    
+    position: relative; 
+    font-size: 2em;     
+    display: inline-block; 
+    margin-top: 24px;
     font-weight: 900;
 }
 .work-above h1, h2 , h3, h4{
@@ -216,7 +229,6 @@ h4{
 .build h2{
     line-height: 0.8;
 }
-
 .work-above h2{
     font-size: 2.8em;
 }
@@ -229,12 +241,17 @@ h4{
     font-size: 1.5em;
 }
 .work{
-    padding: 10px;
+    padding: 10px 2px;
 }
-
+.pago{
+    border: 2px;
+}
 .content {
     padding-top: 15px;
-
+}
+.square{
+    margin: 20px 60px;
+    border-style: solid; 
 }
 .btn-round {
     border-width: 1px;
@@ -346,12 +363,33 @@ h4{
 
 .content {
     padding-top: 15px;
-
 }
 
+.space{
+    background: #fff;
+    margin-bottom: 20px;
+    padding: 20px;
+}
 
-  
+.packtours{
+    background: #000;
+    color: #fff;
+    padding: 0px 40px;
+    margin: 0px 0px;
+    font-size: 1.5em;
+    font-weight: bold;
+    font-family: serif;
+}
 
+.items{
+    background: #D8D8D8;
+    padding: 0px 40px;  
+    margin: 0px;
+}
+.line{
+    padding: 1px 20px;
+    margin-bottom: 30px;
+}
 
 .Cuadrado {
     margin-left: 60px;
@@ -360,9 +398,9 @@ h4{
     width: 800px; 
     height: 450px; 
     //border: 2px solid #555;
-     width: 800px; 
-     height: 450px; 
-     //border: 2px solid #555;
+    width: 800px; 
+    height: 450px; 
+    //border: 2px solid #555;
 }
 .margen{
 
@@ -396,7 +434,7 @@ h4{
     margin-left: 700px
 }
 
- .columna4{
+.columna4{
 
     margin-top: -25px;
     margin-left: 820px
@@ -476,7 +514,7 @@ h4{
         background-color: rgba(22,22,22,0.8);
     }
     .build .container{
-        padding-top: 45px;
+        padding-top: 30px;
     }
     .testimonials .container{
         padding-top: 30px; 
@@ -499,11 +537,10 @@ h4{
         width: 400px; 
         height: 350px; 
         //border: 2px solid #555;
-
     }
-}
-@media(max-width: 768px){
-
+    .square{
+        margin: 10px 20px;
+    }
 }
 @media(max-width: 480px){
     .recomendacion{
